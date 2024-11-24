@@ -1,39 +1,54 @@
+Functional Requirements:
+
+The API must allow CRUD operations on books, authors, and categories.
+Books can be filtered by author, category, and availability.
+Admin authentication is required for modifying or deleting resources.
+The API must return appropriate HTTP status codes for all operations.
+Error messages must provide details like error code, message, and suggestions.
+
+Non-Functional Requirements:
+
+Response time must not exceed 500ms for 90% of requests under typical load.
+API should handle up to 1000 concurrent users without performance degradation.
+Use HTTPS for all communication.
+JWT-based authentication with role-based access control.
+API uptime should be at least 99.9%.
+Follow RESTful principles for consistency.
+GET responses for books, authors, and categories should be cached for 10 minutes.
+
 Entities:
 
 Book
-
 Attributes: id, title, author_id, category_id, published_date, isbn, status (available/borrowed), summary.
+
 Author
-
 Attributes: id, name, birth_date, bio.
-Category
 
+Category
 Attributes: id, name, description.
-Operations:
 
 Books:
-
 GET /books - List books with filters (e.g., by author, category, availability). Supports pagination.
 GET /books/{id} - Retrieve book details by ID.
 POST /books - Add a new book (admin-only).
 PUT /books/{id} - Update book details (admin-only).
 DELETE /books/{id} - Remove a book (admin-only).
-Authors:
 
+Authors:
 GET /authors - List authors with filters (e.g., by name). Supports pagination.
 GET /authors/{id} - Retrieve author details by ID.
 POST /authors - Add a new author (admin-only).
 PUT /authors/{id} - Update author details (admin-only).
 DELETE /authors/{id} - Remove an author (admin-only).
-Categories:
 
+Categories:
 GET /categories - List categories.
 GET /categories/{id} - Retrieve category details by ID.
 POST /categories - Add a new category (admin-only).
 PUT /categories/{id} - Update category details (admin-only).
 DELETE /categories/{id} - Remove a category (admin-only).
-API Features:
 
+API Features:
 Pagination: For GET endpoints that return collections, include page and size parameters.
 Filters: For /books, allow filtering by author_id, category_id, status.
 Caching: Cache responses for GET /books, GET /authors, GET /categories for 10 minutes.
