@@ -27,26 +27,95 @@ Attributes: id, name, birth_date, bio.
 Category
 Attributes: id, name, description.
 
-Books:
-GET /books - List books with filters (e.g., by author, category, availability). Supports pagination.
-GET /books/{id} - Retrieve book details by ID.
-POST /books - Add a new book (admin-only).
-PUT /books/{id} - Update book details (admin-only).
-DELETE /books/{id} - Remove a book (admin-only).
+Books API:
 
-Authors:
-GET /authors - List authors with filters (e.g., by name). Supports pagination.
-GET /authors/{id} - Retrieve author details by ID.
-POST /authors - Add a new author (admin-only).
-PUT /authors/{id} - Update author details (admin-only).
-DELETE /authors/{id} - Remove an author (admin-only).
+GET /books
 
-Categories:
-GET /categories - List categories.
-GET /categories/{id} - Retrieve category details by ID.
-POST /categories - Add a new category (admin-only).
-PUT /categories/{id} - Update category details (admin-only).
-DELETE /categories/{id} - Remove a category (admin-only).
+200 OK: Returns a list of books.
+400 Bad Request: Invalid filter or pagination parameters.
+GET /books/{id}
+
+200 OK: Returns book details.
+404 Not Found: Book with the specified ID does not exist.
+POST /books
+
+201 Created: New book added successfully.
+400 Bad Request: Invalid data provided.
+401 Unauthorized: User not authenticated.
+403 Forbidden: User lacks admin privileges.
+PUT /books/{id}
+
+200 OK: Book details updated.
+400 Bad Request: Invalid data provided.
+404 Not Found: Book with the specified ID does not exist.
+401 Unauthorized: User not authenticated.
+403 Forbidden: User lacks admin privileges.
+DELETE /books/{id}
+
+204 No Content: Book deleted successfully.
+404 Not Found: Book with the specified ID does not exist.
+401 Unauthorized: User not authenticated.
+403 Forbidden: User lacks admin privileges.
+
+Authors API:
+
+GET /authors
+
+200 OK: Returns a list of authors.
+400 Bad Request: Invalid pagination or filter parameters.
+GET /authors/{id}
+
+200 OK: Returns author details.
+404 Not Found: Author with the specified ID does not exist.
+POST /authors
+
+201 Created: New author added successfully.
+400 Bad Request: Invalid data provided.
+401 Unauthorized: User not authenticated.
+403 Forbidden: User lacks admin privileges.
+PUT /authors/{id}
+
+200 OK: Author details updated.
+400 Bad Request: Invalid data provided.
+404 Not Found: Author with the specified ID does not exist.
+401 Unauthorized: User not authenticated.
+403 Forbidden: User lacks admin privileges.
+DELETE /authors/{id}
+
+204 No Content: Author deleted successfully.
+404 Not Found: Author with the specified ID does not exist.
+401 Unauthorized: User not authenticated.
+403 Forbidden: User lacks admin privileges.
+
+
+Categories API:
+
+GET /categories
+
+200 OK: Returns a list of categories.
+GET /categories/{id}
+
+200 OK: Returns category details.
+404 Not Found: Category with the specified ID does not exist.
+POST /categories
+
+201 Created: New category added successfully.
+400 Bad Request: Invalid data provided.
+401 Unauthorized: User not authenticated.
+403 Forbidden: User lacks admin privileges.
+PUT /categories/{id}
+
+200 OK: Category details updated.
+400 Bad Request: Invalid data provided.
+404 Not Found: Category with the specified ID does not exist.
+401 Unauthorized: User not authenticated.
+403 Forbidden: User lacks admin privileges.
+DELETE /categories/{id}
+
+204 No Content: Category deleted successfully.
+404 Not Found: Category with the specified ID does not exist.
+401 Unauthorized: User not authenticated.
+403 Forbidden: User lacks admin privileges.
 
 API Features:
 Pagination: For GET endpoints that return collections, include page and size parameters.
